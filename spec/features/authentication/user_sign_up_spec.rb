@@ -14,8 +14,6 @@ RSpec.describe 'Contractor Sign Up' do
 
     new_contractor = Contractor.last
     expect(current_path).to eq(contractor_path(new_contractor))
-    expect(new_contractor.first_name).to eq(valid_contractor_params[:first_name])
-    expect(new_contractor.last_name).to eq(valid_contractor_params[:last_name])
-    expect(new_contractor.email).to eq(valid_contractor_params[:email])
+    expect(page).to have_content('Welcome to SideWork')
   end
 end
