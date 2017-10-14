@@ -37,6 +37,7 @@ group :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
+  gem 'rake'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers', '~> 3.1'
 end
