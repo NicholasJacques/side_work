@@ -15,7 +15,6 @@ RSpec.describe ContractorsController, type: :request do
     scenario 'with valid params' do
       expect { post contractors_path, params: { contractor: valid_contractor_params } }.
         to change { Contractor.count }.by(1)
-
       new_contractor = Contractor.last
 
       expect(response).to have_http_status(:found)
