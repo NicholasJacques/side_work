@@ -1,16 +1,16 @@
-/* Universal */
+// Universal
 
 body {
   padding-top: 60px;
 }
 
-/* miscellaneous */
+// miscellaneous
 
 .debug_dump {
+  border: 1px solid #000000;
   clear: both;
-  border: 1px solid black;
   float: left;
-  width: 100%;
   margin-top: 45px;
   padding: 15px;
+  width: 100%;
 }

@@ -27,8 +27,8 @@ RSpec.describe ContractorsController, type: :request do
     end
 
     scenario 'with invalid params' do
-      expect { post contractors_path, params: { contractor: invalid_contractor_params } }.
-        to_not(change { Contractor.count })
+      expect { post contractors_path, params: { contractor: invalid_contractor_params } }
+        .to_not(change { Contractor.count })
 
       expect(response).to have_http_status(:ok)
       expect(response).to render_template('new')
