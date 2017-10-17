@@ -27,5 +27,8 @@ module SideWork
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.generators do |g|
+      g.fixture_replacement :factory_girl, dir: 'spec/support/factories'
+    end
   end
 end

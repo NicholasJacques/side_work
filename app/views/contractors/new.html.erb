@@ -1,5 +1,5 @@
 <% provide(:title, "Sign up") %>
-<h1>Start picking up some SideWork</h1>
+<h1>Let's pick up some side work</h1>
 <div class="row justify-content-center">
   <div class="col-lg-7">
     <%= form_for(@contractor) do |f| %>
@@ -12,7 +12,7 @@
         
         <div class="form-group col-md-6">
           <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: 'form-control uneditable-input' %>
+          <%= f.text_field :last_name, class: 'form-control' %>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-      <%= f.submit "Create Account", class: "btn btn-primary" %>
+      <%= f.submit "Create Account", class: "btn btn-primary form-control" %>
     <% end %>
   </div>
 </div>

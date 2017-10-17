@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
+gem 'valid_email'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -39,6 +40,7 @@ group :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
+  gem 'rack_session_access'
   gem 'rake'
   gem 'rails-controller-testing'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
