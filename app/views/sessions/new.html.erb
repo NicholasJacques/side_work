@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-lg-7">
-    <%= form_for :session, url: signin_path do |f| %>
+    <%= form_for :session, url: signin_path, html: {id: 'signin-form'} do |f| %>
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control'%>

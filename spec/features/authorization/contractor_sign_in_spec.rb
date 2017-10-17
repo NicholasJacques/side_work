@@ -11,10 +11,11 @@ RSpec.describe 'Contractor sign in' do
     contractor = create(:contractor, password: 'password123')
 
     visit signin_path
-
-    fill_in 'session[email]', with: contractor.email
-    fill_in 'session[password]', with: contractor.password
-    click_on 'Sign in'
+    within('form#signin-form') do
+      fill_in 'session[email]', with: contractor.email
+      fill_in 'session[password]', with: contractor.password
+      click_on 'Sign in'
+    end
 
     expect(current_path).to eq(contractor_path(contractor))
     within('div.alert') do
@@ -27,9 +28,10 @@ RSpec.describe 'Contractor sign in' do
       contractor = create(:contractor, password: 'password123')
     
       visit signin_path
-      fill_in 'session[email]', with: contractor.email
-    
-      click_on 'Sign in'
+      within('form#signin-form') do
+        fill_in 'session[email]', with: contractor.email      
+        click_on 'Sign in'
+      end
 
       expect(current_path).to eq(signin_path)
       within('div.alert') do
@@ -41,9 +43,11 @@ RSpec.describe 'Contractor sign in' do
       contractor = create(:contractor, password: 'password123')
       
       visit signin_path
-      fill_in 'session[password]', with: contractor.password
       
-      click_on 'Sign in'
+      within('form#signin-form') do
+        fill_in 'session[password]', with: contractor.password        
+        click_on 'Sign in'
+      end
 
       expect(current_path).to eq(signin_path)
       within('div.alert') do
@@ -55,10 +59,13 @@ RSpec.describe 'Contractor sign in' do
       contractor = create(:contractor, password: 'password123')
       
       visit signin_path
-      fill_in 'session[email]', with: 'bad_email#bad.com'
-      fill_in 'session[password]', with: contractor.password
-      
-      click_on 'Sign in'
+
+      within('form#signin-form') do
+        fill_in 'session[email]', with: 'bad_email#bad.com'
+        fill_in 'session[password]', with: contractor.password
+        
+        click_on 'Sign in'
+      end
 
       expect(current_path).to eq(signin_path)
       within('div.alert') do
@@ -70,10 +77,12 @@ RSpec.describe 'Contractor sign in' do
       contractor = create(:contractor, password: 'password123')
       
       visit signin_path
-      fill_in 'session[email]', with: contractor.email
-      fill_in 'session[password]', with: 'badpassword'
       
-      click_on 'Sign in'
+      within('form#signin-form') do
+        fill_in 'session[email]', with: contractor.email
+        fill_in 'session[password]', with: 'badpassword'
+        click_on 'Sign in'
+      end
 
       expect(current_path).to eq(signin_path)
       within('div.alert') do

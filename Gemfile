@@ -40,6 +40,7 @@ group :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
+  gem 'rack_session_access'
   gem 'rake'
   gem 'rails-controller-testing'
   gem 'shoulda-callback-matchers', '~> 1.1.1'

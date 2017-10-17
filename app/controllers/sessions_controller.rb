@@ -3,14 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = Contractor.find_by(email: params[:session][:email].downcase)
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      flash[:success] = "Welcome, #{current_user.first_name}."
-      redirect_to @user
+    user = Contractor.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      log_in(user)
     else
-      flash.now[:danger] = 'This Email/Password combination was not found.'
-      render :new
+      failed_log_in
     end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    @current_user = nil
+    redirect_to root_path
   end
 end
