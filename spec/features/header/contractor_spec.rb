@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'header viewed by an authenticated contractor' do
   before(:each) do
-    sign_in_contractor(create(:contractor))
+    sign_in(create(:contractor))
     visit root_path
   end
 

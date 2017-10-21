@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'header viewed by an authenticated restaurant' do
   before(:each) do
-    sign_in_contractor(create(:contractor))
+    sign_in(create(:restaurant))
     visit root_path
   end
 
