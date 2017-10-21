@@ -20,6 +20,7 @@ RSpec.describe RestaurantsController, type: :request do
       expect(User.count).to eq(1)
       expect(response).to have_http_status(:found)
       expect(assigns(:restaurant)).to eq(new_restaurant)
+      expect(assigns(:current_user)).to eq(new_restaurant.user)
     end
 
     scenario 'with invalid params' do

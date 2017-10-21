@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   post 'signin', to: 'sessions#create'
   delete 'signout', to: 'sessions#destroy'
 
-  resources :contractors, only: [:create, :show]
+  resources :contractors, only: [:create, :show, :edit]
   resources :restaurants, only: [:create, :show]
 end

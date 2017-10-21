@@ -19,7 +19,7 @@
           <%= link_to 'Sign out', signout_path, method: :delete, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to current_user do %>
+          <%= link_to edit_contractor_path(current_user.profile) do %>
             <% content_tag :i, "person", class: "account-icon material-icons md-36 md-dark" %>
           <% end %>
         </li>

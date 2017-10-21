@@ -7,6 +7,7 @@ class ContractorsController < ApplicationController
   def create
     @contractor = Contractor.new(contractor_params)
     if @contractor.save
+      log_in(@contractor.user)
       flash[:success] = 'Welcome to SideWork'
       redirect_to @contractor
     else

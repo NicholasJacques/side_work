@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      log_in(@restaurant.user)
       flash[:success] = 'Welcome to SideWork'
       redirect_to @restaurant
     else
