@@ -1,7 +1,9 @@
 module StaticPagesHelper
   def render_header
-    if current_user.class == Contractor
-      render 'layouts/contractor_header'
+    if current_user
+      if current_user.contractor?
+        render 'layouts/contractor_header'
+      end
     else
       render 'layouts/guest_header'
     end

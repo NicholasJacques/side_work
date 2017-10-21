@@ -17,6 +17,6 @@ module ContractorHelper
   end
 
   def sign_in_contractor(contractor)
-    page.set_rack_session(user_id: contractor.id)
+    page.set_rack_session(user_id: contractor.user.id)
   end
 end
