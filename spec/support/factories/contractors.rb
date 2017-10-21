@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :contractor do
-    first_name 'Nicholas'
+    first_name 'Nick'
     last_name 'Jacques'
-    email "test@test.com"
-    password 'Password123'
+    after(:build) do |contractor|
+      contractor.user = build(:user, profile: contractor)
+    end
   end
 end

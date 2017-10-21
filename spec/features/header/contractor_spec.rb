@@ -25,6 +25,7 @@ RSpec.describe 'header viewed by an authenticated contractor' do
   end
 
   it 'has a link to log out' do
-    expect(page).to have_link('Sign out')
+    expect(page).to have_link('Sign out', href: signout_path)
   end
+
 end

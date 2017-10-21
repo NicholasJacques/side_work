@@ -1,6 +1,7 @@
 class ContractorsController < ApplicationController
   def new
     @contractor = Contractor.new
+    @contractor.user = User.new
   end
 
   def create
@@ -17,11 +18,13 @@ class ContractorsController < ApplicationController
     @contractor = Contractor.find(params[:id])
   end
 
+  private
+
   def contractor_params
     params.require(:contractor).permit(:first_name,
                                        :last_name,
-                                       :email,
-                                       :password,
-                                       :password_confirmation)
+                                        user_attributes: [:email,
+                                                          :password,
+                                                          :password_confirmation])
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe 'Contractor sign in' do
   end
 
   scenario 'With valid inputs and existing account' do
-    contractor = create(:contractor, password: 'password123')
+    contractor = create(:contractor)
 
     visit signin_path
     within('form#signin-form') do
@@ -25,11 +25,11 @@ RSpec.describe 'Contractor sign in' do
 
   context 'with invalid inputs' do
     scenario 'missing password' do
-      contractor = create(:contractor, password: 'password123')
-    
+      contractor = create(:contractor)
+
       visit signin_path
       within('form#signin-form') do
-        fill_in 'session[email]', with: contractor.email      
+        fill_in 'session[email]', with: contractor.email
         click_on 'Sign in'
       end
 
@@ -40,12 +40,12 @@ RSpec.describe 'Contractor sign in' do
     end
 
     scenario 'missing email' do
-      contractor = create(:contractor, password: 'password123')
-      
+      contractor = create(:contractor)
+
       visit signin_path
-      
+
       within('form#signin-form') do
-        fill_in 'session[password]', with: contractor.password        
+        fill_in 'session[password]', with: contractor.password
         click_on 'Sign in'
       end
 
@@ -56,14 +56,14 @@ RSpec.describe 'Contractor sign in' do
     end
 
     scenario 'bad email' do
-      contractor = create(:contractor, password: 'password123')
-      
+      contractor = create(:contractor)
+
       visit signin_path
 
       within('form#signin-form') do
         fill_in 'session[email]', with: 'bad_email#bad.com'
         fill_in 'session[password]', with: contractor.password
-        
+
         click_on 'Sign in'
       end
 
@@ -74,10 +74,10 @@ RSpec.describe 'Contractor sign in' do
     end
 
     scenario 'bad_password' do
-      contractor = create(:contractor, password: 'password123')
-      
+      contractor = create(:contractor)
+
       visit signin_path
-      
+
       within('form#signin-form') do
         fill_in 'session[email]', with: contractor.email
         fill_in 'session[password]', with: 'badpassword'
