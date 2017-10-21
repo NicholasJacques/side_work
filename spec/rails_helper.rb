@@ -34,5 +34,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include ContractorHelper
   config.include RestaurantHelper
+  config.include SessionHelper
   config.include EmailHelper, type: :model
 end

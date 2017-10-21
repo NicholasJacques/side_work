@@ -19,6 +19,7 @@ RSpec.describe ContractorsController, type: :request do
 
       expect(response).to have_http_status(:found)
       expect(assigns(:contractor)).to eq(new_contractor)
+      expect(assigns(:current_user)).to eq(new_contractor.user)
       expect(response).to redirect_to(contractor_path(new_contractor))
 
       expect(new_contractor.first_name).to eq(valid_contractor_params[:first_name])

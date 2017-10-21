@@ -17,6 +17,8 @@ module SessionsHelper
   def flash_welcome_message(user)
     if user.contractor?
       flash[:success] = "Welcome, #{user.profile.first_name}."
+    else
+      flash[:success] = "Signed in as #{user.profile.name}."
     end
   end
 end

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'header viewed by an authenticated contractor' do
+RSpec.describe 'header viewed by an authenticated restaurant' do
   before(:each) do
-    sign_in(create(:contractor))
+    sign_in(create(:restaurant))
     visit root_path
   end
 
@@ -21,6 +21,12 @@ RSpec.describe 'header viewed by an authenticated contractor' do
   it 'does not have a link to sign up as a contractor' do
     within('header') do
       expect(page).to_not have_link('Start Picking up Sidework', href: '#')      
+    end
+  end
+
+  it 'does not have a link to sign up as a restaurant' do
+    within('header') do
+      expect(page).to_not have_link('Hire', href: '#')
     end
   end
 

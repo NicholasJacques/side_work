@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <%= link_to 'SideWork', root_path, class: "navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-links">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to 'Sign out', signout_path, method: :delete, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to edit_restaurant_path(current_user.profile) do %>
+            <% content_tag :i, "person", class: "account-icon material-icons md-36 md-dark" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

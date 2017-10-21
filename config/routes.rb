@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :contractors, only: [:create, :show, :edit]
-  resources :restaurants, only: [:create, :show]
+  resources :restaurants, only: [:create, :show, :edit]
 end

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'sign out contractor' do
-  it 'signs out contractor and redirects to home page' do
-    contractor = create(:contractor)
-    sign_in(contractor)
+RSpec.describe 'sign out restaurant' do
+  it 'signs out restaurant and redirects to home page' do
+    restaurant = create(:contractor)
+    sign_in(restaurant)
 
-    visit contractor_path(contractor)
+    visit restaurant_path(restaurant)
 
     within('header') do
       click_on 'Sign out'
