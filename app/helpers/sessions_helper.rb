@@ -5,12 +5,18 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
-    flash[:success] = "Welcome, #{user.first_name}."
-    redirect_to user
+    flash_welcome_message(user)
+    redirect_to user.profile
   end
 
   def failed_log_in
     flash.now[:danger] = 'This Email/Password combination was not found.'
     render :new
+  end
+
+  def flash_welcome_message(user)
+    if user.contractor?
+      flash[:success] = "Welcome, #{user.profile.first_name}."
+    end
   end
 end

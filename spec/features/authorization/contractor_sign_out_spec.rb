@@ -10,7 +10,7 @@ RSpec.describe 'sign out contractor' do
     within('header') do
       click_on 'Sign out'
     end
-
+    
     expect(current_path).to eq(root_path)
     within('header') do
       expect(page).to_not have_content('Sign out')

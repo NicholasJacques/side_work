@@ -1,4 +1,38 @@
 <% provide(:title, 'Sign up') %>
+<h1>Start Hiring</h1>
 
-<h1>Restaurants#new</h1>
-<p>Find me in app/views/restaurants/new.html.erb</p>
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <%= form_for(@restaurant) do |f| %>
+      <%= render 'shared/error_messages', object: @restaurant %>
+      <div class="form-group">
+        <%= f.label :name, "What is your Restaurant's name?" %>
+        <%= f.text_field :name, class: 'form-control'%>
+      </div>
+
+      <%= f.fields_for :user do |user_form|%>
+        <div class='form-group'>
+          <%= user_form.label :email %>
+          <%= user_form.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class='form-group'>
+          <%= user_form.label :password %>
+          <%= user_form.password_field :password, class: 'form-control' %>
+        </div>
+
+        <div class='form-group'>
+          <%= user_form.label :password_confirmation %>
+          <%= user_form.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control'%>
+      </div>
+
+      <%= f.submit "Create Account", class: "btn btn-primary form-control" %>
+    <% end %>
+  </div>
+</div>

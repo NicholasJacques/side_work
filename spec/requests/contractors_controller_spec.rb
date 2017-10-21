@@ -23,13 +23,14 @@ RSpec.describe ContractorsController, type: :request do
 
       expect(new_contractor.first_name).to eq(valid_contractor_params[:first_name])
       expect(new_contractor.last_name).to eq(valid_contractor_params[:last_name])
-      expect(new_contractor.email).to eq(valid_contractor_params[:email])
+      expect(new_contractor.email).to eq(valid_contractor_params[:user_attributes][:email])
     end
 
     scenario 'with invalid params' do
       expect { post contractors_path, params: { contractor: invalid_contractor_params } }
         .to_not(change { Contractor.count })
 
+      expect(User.count).to eq(0)
       expect(response).to have_http_status(:ok)
       expect(response).to render_template('new')
       expect(assigns(:contractor)).to be_a_new(Contractor)
