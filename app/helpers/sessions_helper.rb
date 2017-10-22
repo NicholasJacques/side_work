@@ -9,6 +9,15 @@ module SessionsHelper
     flash_welcome_message(user)
   end
 
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
+  def logged_in?
+    !current_user.nil?
+  end
+
   def failed_log_in
     flash.now[:danger] = 'This Email/Password combination was not found.'
     render :new

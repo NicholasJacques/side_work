@@ -18,7 +18,7 @@ RSpec.describe 'Contractor sign in' do
     end
 
     expect(current_path).to eq(contractor_path(contractor))
-    within('div.alert') do
+    within('div.alert-success') do
       expect(page).to have_content("Welcome, #{contractor.first_name}.")
     end
   end
