@@ -61,7 +61,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "side_work_#{Rails.env}"
   config.action_mailer.perform_caching = false
-  config.action_mailer.deliver_method = :smtp
+  config.action_mailer.delivery_method = :smtp
   host = 'side-work.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
