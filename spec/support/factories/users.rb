@@ -7,9 +7,23 @@ FactoryGirl.define do
     email
     password 'password123'
     phone_number '111-111-1111'
+
+    trait :contractor do
+      after(:build) do |user|
+        user.profile = build(:contractor)
+      end
+    end
+
+    trait :restaurant do
+      after(:build) do |user|
+        user.profile = build(:restaurant)
+      end
+    end
+
     after(:build) do |user|
       if user.profile.nil?
-        user.profile = build(:contractor)
+        [0, 1].sample == 0 ? user.profile = build(:contractor) :
+                             user.profile = build(:restaurant)
       end
     end
   end

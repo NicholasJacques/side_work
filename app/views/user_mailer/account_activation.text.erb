@@ -1,0 +1,9 @@
+SideWork
+Hi <%= @user.email %>
+
+Thank you for signing up for SideWork.
+
+You will not be able to make full use of SideWork until you activate your account.
+
+Please verify your email by clicking this link:
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

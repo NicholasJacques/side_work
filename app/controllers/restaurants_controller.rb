@@ -7,8 +7,9 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      @restaurant.send_activation_email
       log_in(@restaurant.user)
-      flash[:success] = 'Welcome to SideWork'
+      flash[:info] = 'Please check your email to continue setting up your account'
       redirect_to @restaurant
     else
       render 'new'

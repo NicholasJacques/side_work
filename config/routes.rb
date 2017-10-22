@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :contractors, only: [:create, :show, :edit]
   resources :restaurants, only: [:create, :show, :edit]
+  resources :account_activations, only: [:edit]
 end
