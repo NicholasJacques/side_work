@@ -5,7 +5,5 @@ FactoryGirl.define do
     after(:build) do |contractor|
       contractor.user = build(:user, profile: contractor)
     end
-
-    trait
   end
 end
