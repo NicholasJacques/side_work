@@ -14,7 +14,7 @@ RSpec.describe 'Restaurant sign in' do
 
     expect(current_path).to eq(restaurant_path(restaurant))
     expect(page).to have_content("Sign out")
-    within('div.alert') do
+    within('div.alert-success') do
       expect(page).to have_content("Signed in as #{restaurant.name}.")
     end
   end

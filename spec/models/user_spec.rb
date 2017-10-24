@@ -5,15 +5,19 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid
   end
 
-  let(:user) { build(:user) }
-
   describe 'associations' do
     describe 'profile' do
       it 'can be an instance of Contractor' do
-        expect(user.profile).to be_a(Contractor)
+        expect(build(:user, :contractor).profile).to be_a(Contractor)
+      end
+
+      it 'can be an instance of Restaurant' do
+        expect(build(:user, :restaurant).profile).to be_a(Restaurant)
       end
     end
   end
+
+  let(:user) { build(:user) }
 
   describe 'attributes' do
     describe 'email' do
@@ -59,20 +63,20 @@ RSpec.describe User, type: :model do
 
       it 'must be longer than 6 chars' do
         user.password = 'tp123'
-        expect(user).to_not be_valid        
+        expect(user).to_not be_valid
       end
 
       it 'must be shorter than 50 characters' do
         user.password = 'test123' + 'a' * 44
-        expect(user).to_not be_valid                
+        expect(user).to_not be_valid
       end
 
       it 'must contain at least one number or symbol' do
         valid_passwords = %w[password1
-                           p@ssword
-                           pa5$word1
-                           #*@&#*&
-                           198324098402]
+                             p@ssword
+                             pa5$word1
+                             #*@&#*&
+                             198324098402]
 
         valid_passwords.each do |password|
           user.password = password
@@ -81,6 +85,12 @@ RSpec.describe User, type: :model do
 
         user.password = 'Password'
         expect(user).to_not be_valid
+      end
+    end
+
+    describe 'activate' do
+      it 'is false by default' do
+        expect(user.activated?).to be false
       end
     end
 

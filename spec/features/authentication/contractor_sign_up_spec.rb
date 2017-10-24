@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Contractor Sign Up' do
+  after(:each) do
+    ActionMailer::Base.deliveries.clear   
+  end
+
   scenario 'visit page' do
     visit contractor_sign_up_path
 
@@ -17,6 +21,7 @@ RSpec.describe 'Contractor Sign Up' do
     fill_in 'contractor[user_attributes][password_confirmation]', with: valid_contractor_params[:user_attributes][:password]
     click_on 'Create Account'
 
+    expect(ActionMailer::Base.deliveries.size).to eq(1)
     new_contractor = Contractor.last
     expect(current_path).to eq(contractor_path(new_contractor))
     expect(page).to have_content('Welcome to SideWork')
@@ -34,7 +39,8 @@ RSpec.describe 'Contractor Sign Up' do
       click_on 'Create Account'
 
       expect(current_path).to eq(contractors_path)
-
+      expect(ActionMailer::Base.deliveries.size).to eq(0)
+    
       within('div#error-explanation') do
         expect(page).to have_css('div.alert-danger', text: 'The form contains 2 errors.')
         expect(page).to have_css('li', text: "User email can't be blank")
