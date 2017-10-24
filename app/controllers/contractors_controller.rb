@@ -19,6 +19,9 @@ class ContractorsController < ApplicationController
     @contractor = Contractor.find(params[:id])
   end
 
+  def edit
+  end
+
   private
 
   def contractor_params
