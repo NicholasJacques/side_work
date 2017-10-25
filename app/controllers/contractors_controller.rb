@@ -21,6 +21,7 @@ class ContractorsController < ApplicationController
   end
 
   def edit
+    @contractor = User.find(params[:id]).profile
   end
 
   private
