@@ -39,6 +39,7 @@ gem 'valid_email'
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'coveralls', require: false
   gem 'faker'
   gem 'launchy'
   gem 'rack_session_access'
