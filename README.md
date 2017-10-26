@@ -1,1 +1,1 @@
-https://travis-ci.org/NicholasJacques/side_work.svg?branch=travis_ci
+![travis ci badge](https://travis-ci.org/NicholasJacques/side_work.svg?branch=travis_ci)
