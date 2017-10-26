@@ -21,7 +21,16 @@ class ContractorsController < ApplicationController
   end
 
   def edit
-    @contractor = User.find(params[:id]).profile
+    @contractor = Contractor.find(params[:id])
+  end
+
+  def update
+    @contractor = Contractor.find(params[:id])
+    if @contractor.update_attributes(contractor_params)
+      redirect_to @contractor
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -29,8 +38,15 @@ class ContractorsController < ApplicationController
   def contractor_params
     params.require(:contractor).permit(:first_name,
                                        :last_name,
-                                        user_attributes: [:email,
-                                                          :password,
-                                                          :password_confirmation])
+                                       user_attributes: [:email,
+                                                         :id,
+                                                         :password,
+                                                         :password_confirmation,
+                                                         address_attributes: [:street,
+                                                                              :id,
+                                                                              :street2,
+                                                                              :city,
+                                                                              :state,
+                                                                              :zip_code]])
   end
 end

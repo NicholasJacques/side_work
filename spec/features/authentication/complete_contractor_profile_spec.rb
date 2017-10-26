@@ -14,15 +14,14 @@ RSpec.describe 'Complete contractor profile' do
   scenario 'complete profile with valid params' do
     visit edit_contractor_path(contractor)
 
-    fill_in 'contractor[address_1]', with: '400 E 8th Avenue'
-    fill_in 'contractor[city]',with: 'Denver'
-    fill_in 'contractor[state]', with: 'Colorado'
-    fill_in 'contractor[zip_code]', with: '80203'
-    fill_in 'contractor[work_location]', with: 'Casa Bonita'
-    fill_in 'contractor[current_role]', with: 'Line Cook'
+    fill_in 'contractor[user_attributes][address_attributes][street]', with: '400 E 8th Avenue'
+    fill_in 'contractor[user_attributes][address_attributes][street2]', with: ' '
+    fill_in 'contractor[user_attributes][address_attributes][city]', with: 'Colorado'
+    fill_in 'contractor[user_attributes][address_attributes][zip_code]', with: '80203'
+    # fill_in 'contractor[work_location]', with: 'Casa Bonita'
+    # fill_in 'contractor[current_role]', with: 'Line Cook'
     click_on 'Update Account'
 
-    
-    # select skills
+    expect(current_path).to eq(contractor_path(contractor))
   end
 end

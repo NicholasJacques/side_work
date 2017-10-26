@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'signin', to: 'sessions#create'
   delete 'signout', to: 'sessions#destroy'
 
-  resources :contractors, only: [:create, :show, :edit]
+  resources :contractors, only: [:create, :show, :edit, :update]
   resources :restaurants, only: [:create, :show, :edit]
   resources :account_activations, only: [:edit]
 end

@@ -5,6 +5,9 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   belongs_to :profile, polymorphic: true, inverse_of: :user
+  has_one :address
+  accepts_nested_attributes_for :address
+  after_create :create_empty_address
 
   validates :email, presence: true,
                     email: true,
@@ -13,10 +16,11 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6, maximum: 50 },
                        format: { with: /\d+|\W+/,
-                                 message: 'must contain at least one number or special character' }
+                                 message: 'must contain at least one number or special character' },
+                       allow_nil: true
 
   # validates :phone_number, presence: true
-  
+
   def self.new_token
     SecureRandom.urlsafe_base64
   end
@@ -44,6 +48,11 @@ class User < ApplicationRecord
   end
 
   private
+
+    def create_empty_address
+      self.build_address
+      address.save(validate: false)
+    end
 
     def create_activation_digest
       self.activation_token = User.new_token
