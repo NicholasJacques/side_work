@@ -8,6 +8,11 @@ FactoryGirl.define do
     password 'password123'
     phone_number '111-111-1111'
 
+    trait :activated do
+      activated true
+      activated_at Time.now
+    end
+
     trait :contractor do
       after(:build) do |user|
         user.profile = build(:contractor)

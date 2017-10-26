@@ -1,0 +1,58 @@
+<% provide(:title, 'Account') %>
+
+<h1>Your Account</h1>
+
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <%= form_for(@contractor) do |f| %>
+      <%= render 'shared/error_messages', object: @contractor %>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group col-md-6">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= f.fields_for :user do |user_form|%>
+        <div class='form-group'>
+          <%= user_form.label :email %>
+          <%= user_form.email_field :email, class: 'form-control' %>
+        </div>
+
+        <%= user_form.fields_for :address do |address_form|%>
+          <div class='form-group'>
+            <%= address_form.label :street %>
+            <%= address_form.text_field :street, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :street2 %>
+            <%= address_form.text_field :street2, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :city %>
+            <%= address_form.text_field :city, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :state %>
+            <%= address_form.text_field :state, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :zip_code %>
+            <%= address_form.text_field :zip_code, class: 'form-control' %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= f.submit "Update Account", class: "btn btn-primary form-control" %>
+    <% end %>
+  </div>
+</div>

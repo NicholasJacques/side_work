@@ -14,6 +14,21 @@ RSpec.describe User, type: :model do
       it 'can be an instance of Restaurant' do
         expect(build(:user, :restaurant).profile).to be_a(Restaurant)
       end
+
+      describe 'address' do
+        it 'has one address' do
+          user = build(:user)
+          user.address = build(:address)
+          expect(user.address).to be_a(Address)
+        end
+
+        it 'creates a blank address after creation' do
+          user = build(:user)
+          expect(user.address).to be_nil
+          user.save
+          expect(user.address).to_not be_nil
+        end
+      end
     end
   end
 
