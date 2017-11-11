@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Contractor Sign Up' do
   after(:each) do
-    ActionMailer::Base.deliveries.clear   
+    ActionMailer::Base.deliveries.clear
   end
 
   scenario 'visit page' do
