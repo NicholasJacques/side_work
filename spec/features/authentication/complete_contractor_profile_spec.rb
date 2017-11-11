@@ -1,18 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'Complete contractor profile' do
-  
+
   let(:contractor) { create(:contractor, :activated) }
+
+  before(:each) do
+    sign_in(contractor)
+  end
 
   scenario 'visit page' do
     visit edit_contractor_path(contractor)
-    address = create(:address)
 
     expect(page).to have_title('Account | SideWork')
   end
 
   scenario 'complete profile with valid params' do
     visit edit_contractor_path(contractor)
+
+    expect(page).to have_content('Please complete your account to begin using SideWork')
 
     fill_in 'contractor[user_attributes][address_attributes][street]', with: '400 E 8th Avenue'
     fill_in 'contractor[user_attributes][address_attributes][street2]', with: ' '

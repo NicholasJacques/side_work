@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024052410) do
+ActiveRecord::Schema.define(version: 20171111200232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171024052410) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.boolean "account_completed", default: false
     t.index ["profile_type", "profile_id"], name: "index_users_on_profile_type_and_profile_id"
   end
 
