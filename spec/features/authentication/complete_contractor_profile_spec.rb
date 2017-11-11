@@ -12,12 +12,14 @@ RSpec.describe 'Complete contractor profile' do
     visit edit_contractor_path(contractor)
 
     expect(page).to have_title('Account | SideWork')
+    within('div.alert-warning') do
+      expect(page).to have_content('Please complete your account to begin using SideWork')
+      expect(page).to have_link("complete", href: edit_contractor_path(contractor))
+    end
   end
 
   scenario 'complete profile with valid params' do
     visit edit_contractor_path(contractor)
-
-    expect(page).to have_content('Please complete your account to begin using SideWork')
 
     fill_in 'contractor[user_attributes][address_attributes][street]', with: '400 E 8th Avenue'
     fill_in 'contractor[user_attributes][address_attributes][street2]', with: ' '
