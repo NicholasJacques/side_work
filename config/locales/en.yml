@@ -5,6 +5,9 @@ en:
       contractor/user:
         email: 'Email'
         password: 'Password'
+      restaurant/user:
+        email: 'Email'
+        password: 'Password'
       user/address:
         street: 'Street address'
         base: ''

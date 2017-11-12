@@ -1,1 +1,56 @@
 <% provide(:title, 'Account') %>
+
+<h1>Your Account</h1>
+
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <%= form_for(@restaurant) do |f| %>
+      <%= render 'shared/error_messages', object: @restaurant %>
+      <div class="form-group">
+        <%= f.label "What is your restaurant called?"%>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "What is the general manager's name?"%>
+        <%= f.text_field :manager, class: "form-control"%>
+      </div>
+
+      <%= f.fields_for :user do |user_form| %>
+        <div class='form-group'>
+          <%= user_form.label "What email should we contact you at?" %>
+          <%= user_form.email_field :email, class: 'form-control' %>
+        </div>
+
+        <%= user_form.fields_for :address do |address_form| %>
+          <div class='form-group'>
+            <%= address_form.label :street %>
+            <%= address_form.text_field :street, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :street2 %>
+            <%= address_form.text_field :street2, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :city %>
+            <%= address_form.text_field :city, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :state %>
+            <%= address_form.text_field :state, class: 'form-control' %>
+          </div>
+
+          <div class='form-group'>
+            <%= address_form.label :zip_code %>
+            <%= address_form.text_field :zip_code, class: 'form-control' %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= f.submit "Update Account", class: "btn btn-primary form-control" %>
+    <% end %>
+  </div>
+</div>
