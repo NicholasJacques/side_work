@@ -1,7 +1,7 @@
 class Contractor < ApplicationRecord
   has_one :user, as: :profile, inverse_of: :profile
   accepts_nested_attributes_for :user
-  has_one :address, through: :user
+  # has_one :address, through: :user
   delegate :email,
            :phone_number,
            :password,

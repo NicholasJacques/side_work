@@ -8,6 +8,7 @@ class Restaurant < ApplicationRecord
            :account_completed?,
            :complete_account,
            to: :user
+           
   validates :name, presence: true,
                    length: { minimum: 1, maximum: 64 }
 end

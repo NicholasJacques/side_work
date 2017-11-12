@@ -36,10 +36,10 @@ RSpec.describe 'Restaurant sign up' do
         click_on 'Create Account'
 
       expect(current_path).to eq(restaurants_path)
-      expect(ActionMailer::Base.deliveries.size).to eq(0)      
+      expect(ActionMailer::Base.deliveries.size).to eq(0)
       within('div#error-explanation') do
         expect(page).to have_css('div.alert-danger', text: 'The form contains 1 error.')
-        expect(page).to have_css('li', text: 'User email is invalid')
+        expect(page).to have_css('li', text: 'Email is invalid')
       end
       expect(User.count).to eq(0)
       expect(Restaurant.count).to eq(0)
