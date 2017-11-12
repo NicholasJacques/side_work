@@ -17,4 +17,19 @@ RSpec.describe 'Complete contractor profile' do
       expect(page).to have_link("complete", href: edit_restaurant_path(restaurant))
     end 
   end
+
+  context 'complete profile with valid inputs' do
+    visit edit_restaurant_path(restaurant)
+
+    fill_in 'restaurant[user_attributes][address_attributes][street]', with: '400 E 8th Avenue'
+    fill_in 'restaurant[user_attributes][address_attributes][street2]', with: ' '
+    fill_in 'restaurant[user_attributes][address_attributes][city]', with: 'Denver'
+    fill_in 'restaurant[user_attributes][address_attributes][state]', with: 'Colorado'
+    fill_in 'restaurant[user_attributes][address_attributes][zip_code]', with: '80203'
+    click_on 'Update Account'
+
+    restaurant.reload
+    expect(current_path).to eq(restaurant_path(restaurant))
+    expect(restaurant.account_completed?).to eq(true)
+  end
 end
