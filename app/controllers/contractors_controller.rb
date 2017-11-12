@@ -39,8 +39,8 @@ class ContractorsController < ApplicationController
   def contractor_params
     params.require(:contractor).permit(:first_name,
                                        :last_name,
-                                       user_attributes: [:email,
-                                                         :id,
+                                       user_attributes: [:id,
+                                                         :email,
                                                          :password,
                                                          :password_confirmation,
                                                          address_attributes: [:street,

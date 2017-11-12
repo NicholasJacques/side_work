@@ -20,10 +20,10 @@ RSpec.describe 'Restaurant sign up' do
     fill_in 'restaurant[user_attributes][password_confirmation]', with: valid_restaurant_params[:user_attributes][:password_confirmation]
     click_on 'Create Account'
 
-    expect(ActionMailer::Base.deliveries.size).to eq(1)    
+    expect(ActionMailer::Base.deliveries.size).to eq(1)
     new_restaurant = Restaurant.last
     expect(current_path).to eq(restaurant_path(new_restaurant))
-    expect(page).to have_content('Please check your email to continue setting up your account')
+    expect(page).to have_content('Please check your email to verify your account')
   end
 
   context 'with invalid inputs' do

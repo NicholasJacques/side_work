@@ -48,6 +48,10 @@ class User < ApplicationRecord
     BCrypt::Password.new(activation_digest).is_password?(activation_token)
   end
 
+  def complete_account
+    update_attribute(:account_completed, true)
+  end
+
   private
 
     def create_empty_address

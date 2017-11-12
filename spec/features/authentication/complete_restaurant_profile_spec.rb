@@ -18,9 +18,11 @@ RSpec.describe 'Complete contractor profile' do
     end 
   end
 
-  context 'complete profile with valid inputs' do
+  scenario 'complete profile with valid inputs' do
     visit edit_restaurant_path(restaurant)
 
+    fill_in 'restaurant[name]', with: "Bertucci's"
+    fill_in 'restaurant[manager]', with: "Jane Smith"
     fill_in 'restaurant[user_attributes][address_attributes][street]', with: '400 E 8th Avenue'
     fill_in 'restaurant[user_attributes][address_attributes][street2]', with: ' '
     fill_in 'restaurant[user_attributes][address_attributes][city]', with: 'Denver'
