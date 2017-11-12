@@ -13,7 +13,7 @@ RSpec.describe 'email verification' do
 
     visit edit_account_activation_path(user.activation_token, email: user.email)
     user.reload
-    expect(current_path).to eq(polymorphic_path(user.profile))
+    expect(current_path).to eq(edit_polymorphic_path(user.profile))
     within('div.alert-success') do
       expect(page).to have_content('Thank you for verifying your email')
     end

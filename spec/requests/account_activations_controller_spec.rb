@@ -13,7 +13,7 @@ RSpec.describe AccountActivationsController, type: :request do
 
         expect(user.activated?).to be true
         expect(assigns(:current_user)).to eq(user)
-        expect(response).to redirect_to(polymorphic_path(user.profile))
+        expect(response).to redirect_to(edit_polymorphic_path(user.profile))
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe AccountActivationsController, type: :request do
 
       it 'receives a bad token' do
         user = create(:user)
-        
+
         get edit_account_activation_path('bad_token', email: user.email)
         user.reload
 
