@@ -19,6 +19,9 @@ class RestaurantsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   private
 
   def restaurant_params
