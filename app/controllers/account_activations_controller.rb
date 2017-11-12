@@ -5,7 +5,7 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in(user)
       flash[:success] = 'Thank you for verifying your email'
-      redirect_to user.profile
+      redirect_to edit_polymorphic_path(user.profile)
     else
       flash[:danger] = 'Invalid activation email'
       redirect_to root_path
