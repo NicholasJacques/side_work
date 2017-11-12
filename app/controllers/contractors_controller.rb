@@ -27,6 +27,7 @@ class ContractorsController < ApplicationController
   def update
     @contractor = Contractor.find(params[:id])
     if @contractor.update_attributes(contractor_params)
+      @contractor.complete_account
       redirect_to @contractor
     else
       render 'edit'

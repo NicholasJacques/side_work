@@ -43,8 +43,8 @@ RSpec.describe 'Contractor Sign Up' do
     
       within('div#error-explanation') do
         expect(page).to have_css('div.alert-danger', text: 'The form contains 2 errors.')
-        expect(page).to have_css('li', text: "User email can't be blank")
-        expect(page).to have_css('li', text: 'User email is invalid')
+        expect(page).to have_css('li', text: "Email can't be blank")
+        expect(page).to have_css('li', text: 'Email is invalid')
       end
     end
   end

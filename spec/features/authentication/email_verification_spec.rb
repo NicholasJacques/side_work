@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'email verification' do
-  scenario 'test' do
+  scenario 'valid verification url' do
     user = create(:user)
     sign_in(user.profile)
 
@@ -22,4 +22,5 @@ RSpec.describe 'email verification' do
     expect(user.activated?).to be true
     expect(page).to_not have_content('Please check your email to verify your account')
   end
+
 end
