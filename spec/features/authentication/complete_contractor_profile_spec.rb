@@ -33,7 +33,7 @@ RSpec.describe 'Complete contractor profile' do
     expect(contractor.account_completed?).to eq(true)
   end
 
-  context 'missing params' do
+  context 'bad params' do
     scenario 'missing street address' do
       visit edit_contractor_path(contractor)
 
@@ -46,6 +46,22 @@ RSpec.describe 'Complete contractor profile' do
       contractor.reload
       expect(current_path).to eq(contractor_path(contractor))
       expect(page).to have_content("Street address can't be blank")
+      expect(contractor.account_completed?).to eq(false)
+    end
+
+    scenario 'invalid address' do
+      visit edit_contractor_path(contractor)
+      
+      fill_in 'contractor[user_attributes][address_attributes][street]', with: 'not a real address'
+      fill_in 'contractor[user_attributes][address_attributes][street2]', with: ' '
+      fill_in 'contractor[user_attributes][address_attributes][city]', with: 'Denver'
+      fill_in 'contractor[user_attributes][address_attributes][city]', with: 'Colorado'
+      fill_in 'contractor[user_attributes][address_attributes][zip_code]', with: '80203'
+      click_on 'Update Account'
+
+      contractor.reload
+      expect(current_path).to eq(contractor_path(contractor))
+      expect(page).to have_content("Address can't be confirmed")
       expect(contractor.account_completed?).to eq(false)
     end
 

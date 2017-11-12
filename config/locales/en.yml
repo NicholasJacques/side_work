@@ -7,3 +7,4 @@ en:
         password: 'Password'
       user/address:
         street: 'Street address'
+        base: ''
