@@ -5,6 +5,7 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   belongs_to :profile, polymorphic: true, inverse_of: :user
+
   has_one :address
   accepts_nested_attributes_for :address
   after_create :create_empty_address
